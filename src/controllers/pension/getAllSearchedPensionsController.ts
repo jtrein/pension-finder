@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 
 import { getAllSearchedPensions } from "../../services/getAllSearchedPensions";
-import { SearchedPensionsSchema } from "../../validators/searched";
+import { SearchedPensionsResultSchema } from "../../validators/searched";
 import { AppError } from "../../errors";
 
 export const getAllSearchedPensionsController: RequestHandler = async (
@@ -10,7 +10,8 @@ export const getAllSearchedPensionsController: RequestHandler = async (
 ) => {
   const result = await getAllSearchedPensions();
 
-  const { data, ...parsedResult } = SearchedPensionsSchema.safeParse(result);
+  const { data, ...parsedResult } =
+    SearchedPensionsResultSchema.safeParse(result);
 
   if (parsedResult.success === false) {
     // Logging service
