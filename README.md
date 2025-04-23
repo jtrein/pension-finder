@@ -16,7 +16,7 @@ All routes are GET endpoints:
 ### Pension Pots
 
 - `/pension-pots` - Get all pension pots
-- `/pension-pots/forecast` - Get forecasted balances for pension pots
+- `/pension-pots/forecast?years={number}` - Get forecasted balances for pension pots
 
 ### Searching
 
