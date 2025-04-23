@@ -68,8 +68,8 @@ describe("getAllPensionPotsController", () => {
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
-    expect(
-      async () => await getAllPensionPotsController(req, res, () => {})
+    await expect(
+      getAllPensionPotsController(req, res, () => {})
     ).rejects.toThrow("Something went wrong while getting all pension pots");
 
     expect(res.json).toHaveBeenCalledTimes(0);
