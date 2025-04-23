@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { readPensionData } from "./readPensionData";
 import { getAllPensionPots } from "./getAllPensionPots";
-import { PENSION_POTS_FIXTURE } from "../test/fixtures/pensions";
+import { ALL_POTS_FIXTURE } from "../test/fixtures/allPots";
 
 vi.mock("./readPensionData", () => ({
   readPensionData: vi.fn(),
@@ -14,9 +14,7 @@ describe("getAllPensionPots", () => {
   });
 
   it("should return pension pots", async () => {
-    const mockData = {
-      pensionPots: PENSION_POTS_FIXTURE,
-    };
+    const mockData = ALL_POTS_FIXTURE;
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
@@ -26,7 +24,7 @@ describe("getAllPensionPots", () => {
   });
 
   it("should handle empty pension pots", async () => {
-    const mockData = { pensionPots: [] };
+    const mockData = { ...ALL_POTS_FIXTURE, pensionPots: [] };
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 

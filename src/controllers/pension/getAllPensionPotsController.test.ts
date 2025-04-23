@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { readPensionData } from "../../services/readPensionData";
 import { getAllPensionPotsController } from "./getAllPensionPotsController";
 import { PENSION_POTS_FIXTURE } from "../../test/fixtures/pensions";
+import { ALL_POTS_FIXTURE } from "../../test/fixtures/allPots";
 
 vi.mock("../../services/readPensionData", () => ({
   readPensionData: vi.fn(),
@@ -14,7 +15,7 @@ describe("getAllPensionPotsController", () => {
   });
 
   it("should return all pension pots", async () => {
-    const mockData = { pensionPots: PENSION_POTS_FIXTURE };
+    const mockData = ALL_POTS_FIXTURE;
 
     const req = {} as any;
 
@@ -33,7 +34,7 @@ describe("getAllPensionPotsController", () => {
   });
 
   it("should return empty pension pots", async () => {
-    const mockData = { pensionPots: [] };
+    const mockData = ALL_POTS_FIXTURE;
 
     const req = {} as any;
 
@@ -57,7 +58,7 @@ describe("getAllPensionPotsController", () => {
         { ...PENSION_POTS_FIXTURE[0], id: null },
         PENSION_POTS_FIXTURE[1],
       ],
-    };
+    } as any;
 
     const req = {} as any;
 
