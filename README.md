@@ -1,5 +1,14 @@
 # pension-finder
 
+## Run locally
+
+```
+npm run build
+npm start
+```
+
+**NOTE**: I used Node 22 to build the app. See `.nvmrc`.
+
 ## API Routes
 
 All routes are GET endpoints:
@@ -26,3 +35,14 @@ All routes are GET endpoints:
 
 - `/searched-pensions` - Get all searched pensions
 - `/searched-pensions/found` - Get all found searched pensions
+
+## Running tests
+
+```
+npm test
+```
+
+## Todo
+
+- Write more tests!
+- Refactor search by name and id to be a bit cleaner overall. The current goal was to exit early from a search for a specific term while maintaining type safety and improving response value validation.
