@@ -20,7 +20,7 @@ All routes are GET endpoints:
 
 ### Searching
 
-- `/pots/search?name={name}` - Search pots by name
+- `/pots/search?name={name}` - Search a specific pot by name
 - `/pots/search/over?value={number}` - Get pots over a specified value (positive number)
 - `/pots/search/under?value={number}` - Get pots under a specified value (positive number)
 - `/pots/search/employer?name={name}` - Search pots by employer name
