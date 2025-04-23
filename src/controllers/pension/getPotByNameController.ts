@@ -60,7 +60,7 @@ export const getPotByNameController: RequestHandler = async (req, res) => {
 
       if (parsedResult.success === false) {
         // Logging service
-        console.error(fromError(parsedResult.error).toString());
+        // console.error(fromError(parsedResult.error).toString());
 
         throw new AppError({
           status: 500,
