@@ -1,10 +1,10 @@
 import { RequestHandler } from "express";
+import { fromError } from "zod-validation-error";
 import { z } from "zod";
 
 import { getAllPotsByEmployer } from "../../services/getAllPotsByEmployer";
 import { AllPotsResultSchema } from "../../validators/allPots";
 import { AppError } from "../../errors";
-import { fromError } from "zod-validation-error";
 
 const QuerySchema = z.object({
   name: z
