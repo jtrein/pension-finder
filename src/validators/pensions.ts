@@ -16,4 +16,12 @@ export const PensionResultSchema = z.object({
   isWorkplacePension: z.boolean(),
 });
 
+export const PensionWithForecastResultSchema = PensionResultSchema.extend({
+  forecastedBalance: z.number(),
+});
+
 export const PensionsResultSchema = z.array(PensionResultSchema);
+
+export const PensionsWithForecastResultSchema = z.array(
+  PensionWithForecastResultSchema
+);
