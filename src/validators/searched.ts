@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const SearchedPensionsSchema = z.array(
+export const SearchedPensionsResultSchema = z.array(
   z.object({
     id: z.string().uuid(),
     potName: z.string(),
