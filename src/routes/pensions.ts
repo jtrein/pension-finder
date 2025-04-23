@@ -10,6 +10,7 @@ import { getAllPotsUnderValueController } from "../controllers/pension/getAllPot
 import { getAllFoundSearchedPensionsController } from "../controllers/pension/getAllFoundSearchedPensionsController";
 import { getAllPotsByEmployerController } from "../controllers/pension/getAllPotsByEmployerController";
 import { getAllPotsByProviderController } from "../controllers/pension/getAllPotsByProviderController";
+import { getAllPotsForecastedBalanceController } from "../controllers/pension/getAllPotsForecastedBalanceController";
 
 const router = Router();
 
@@ -23,5 +24,6 @@ router.get("/pots/search/under", getAllPotsUnderValueController);
 router.get("/searched-pensions/found", getAllFoundSearchedPensionsController);
 router.get("/pots/search/employer", getAllPotsByEmployerController);
 router.get("/pots/search/provider", getAllPotsByProviderController);
+router.get("/pension-pots/forecast", getAllPotsForecastedBalanceController);
 
 export default router;
