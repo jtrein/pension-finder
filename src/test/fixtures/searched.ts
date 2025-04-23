@@ -1,4 +1,6 @@
-export const SEARCHED_PENSIONS_FIXTURE = [
+import { type SearchedPension } from "../../types/pensions";
+
+export const SEARCHED_PENSIONS_FIXTURE: SearchedPension[] = [
   {
     id: "0a4c2ed0-3b0c-4606-817e-e6f8d14dbfd2",
     potName: "Searched Pension",

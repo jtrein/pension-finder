@@ -1,4 +1,6 @@
-export const PENSION_POTS_FIXTURE = [
+import { type PensionPot } from "../../types/pensions";
+
+export const PENSION_POTS_FIXTURE: PensionPot[] = [
   {
     id: "e181e498-9cab-4570-a188-ed699dc5eefd",
     potName: "Google",
