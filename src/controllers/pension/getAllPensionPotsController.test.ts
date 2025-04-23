@@ -31,4 +31,23 @@ describe("User Handlers", () => {
 
     expect(res.status).not.toHaveBeenCalledWith(404);
   });
+
+  it("should return empty pension pots", async () => {
+    const mockData = { pensionPots: [] };
+
+    const req = {} as any;
+
+    const res = {
+      json: vi.fn(),
+      status: vi.fn().mockReturnThis(),
+    } as any;
+
+    vi.mocked(readPensionData).mockResolvedValue(mockData);
+
+    await getAllPensionPotsController(req, res, () => {});
+
+    expect(res.json).toHaveBeenCalledWith(mockData.pensionPots);
+
+    expect(res.status).not.toHaveBeenCalledWith(404);
+  });
 });
