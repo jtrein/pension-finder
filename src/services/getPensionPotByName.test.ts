@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { readPensionData } from "./readPensionData";
-import { getPotByName } from "./getPotByName";
+import { getPensionPotByName } from "./getPensionPotByName";
 import { PENSION_POTS_FIXTURE } from "../test/fixtures/pensions";
 import { SEARCHED_PENSIONS_FIXTURE } from "../test/fixtures/searched";
 
@@ -9,7 +9,7 @@ vi.mock("./readPensionData", () => ({
   readPensionData: vi.fn(),
 }));
 
-describe("getPotByName", () => {
+describe("getPensionPotByName", () => {
   beforeEach(() => {
     vi.resetAllMocks();
   });
@@ -22,7 +22,7 @@ describe("getPotByName", () => {
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
-    const result = await getPotByName("IBM");
+    const result = await getPensionPotByName("IBM");
 
     expect(result).toEqual(PENSION_POTS_FIXTURE[1]);
   });
@@ -32,7 +32,7 @@ describe("getPotByName", () => {
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
-    const result = await getPotByName("IBM");
+    const result = await getPensionPotByName("IBM");
 
     expect(result).toEqual(null);
   });
@@ -42,7 +42,7 @@ describe("getPotByName", () => {
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
-    const result = await getPotByName("  ");
+    const result = await getPensionPotByName("  ");
 
     expect(result).toEqual(null);
   });
