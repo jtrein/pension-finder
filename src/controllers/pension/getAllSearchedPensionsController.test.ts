@@ -1,20 +1,20 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { readPensionData } from "../../services/readPensionData";
-import { getAllPensionPotsController } from "./getAllPensionPotsController";
-import { PENSION_POTS_FIXTURE } from "../../test/fixtures/pensions";
+import { getAllSearchedPensionsController } from "./getAllSearchedPensionsController";
+import { SEARCHED_PENSIONS_FIXTURE } from "../../test/fixtures/searched";
 
 vi.mock("../../services/readPensionData", () => ({
   readPensionData: vi.fn(),
 }));
 
-describe("getAllPensionPotsController", () => {
+describe("getAllSearchedPensionsController", () => {
   beforeEach(() => {
     vi.resetAllMocks();
   });
 
-  it("should return all pension pots", async () => {
-    const mockData = { pensionPots: PENSION_POTS_FIXTURE };
+  it("should return all searched pension pots", async () => {
+    const mockData = { searchedPensions: SEARCHED_PENSIONS_FIXTURE };
 
     const req = {} as any;
 
@@ -25,15 +25,15 @@ describe("getAllPensionPotsController", () => {
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
-    await getAllPensionPotsController(req, res, () => {});
+    await getAllSearchedPensionsController(req, res, () => {});
 
-    expect(res.json).toHaveBeenCalledWith(mockData.pensionPots);
+    expect(res.json).toHaveBeenCalledWith(mockData.searchedPensions);
 
     expect(res.status).not.toHaveBeenCalledWith(404);
   });
 
-  it("should return empty pension pots", async () => {
-    const mockData = { pensionPots: [] };
+  it("should return empty searched pension pots", async () => {
+    const mockData = { searchedPensions: [] };
 
     const req = {} as any;
 
@@ -44,9 +44,9 @@ describe("getAllPensionPotsController", () => {
 
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
-    await getAllPensionPotsController(req, res, () => {});
+    await getAllSearchedPensionsController(req, res, () => {});
 
-    expect(res.json).toHaveBeenCalledWith(mockData.pensionPots);
+    expect(res.json).toHaveBeenCalledWith(mockData.searchedPensions);
 
     expect(res.status).not.toHaveBeenCalledWith(404);
   });
@@ -54,8 +54,8 @@ describe("getAllPensionPotsController", () => {
   it("should throw when result schema is not valid", async () => {
     const mockData = {
       searchedPensions: [
-        { ...PENSION_POTS_FIXTURE[0], id: null },
-        PENSION_POTS_FIXTURE[1],
+        { ...SEARCHED_PENSIONS_FIXTURE[0], id: null },
+        SEARCHED_PENSIONS_FIXTURE[1],
       ],
     };
 
@@ -69,8 +69,10 @@ describe("getAllPensionPotsController", () => {
     vi.mocked(readPensionData).mockResolvedValue(mockData);
 
     expect(
-      async () => await getAllPensionPotsController(req, res, () => {})
-    ).rejects.toThrow("Something went wrong while getting all pension pots");
+      async () => await getAllSearchedPensionsController(req, res, () => {})
+    ).rejects.toThrow(
+      "Something went wrong while getting all searched pension pots"
+    );
 
     expect(res.json).toHaveBeenCalledTimes(0);
 

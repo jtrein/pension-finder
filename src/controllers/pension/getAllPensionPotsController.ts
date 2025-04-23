@@ -1,5 +1,4 @@
 import { RequestHandler } from "express";
-import { fromError } from "zod-validation-error";
 
 import { getAllPensionPots } from "../../services/getAllPensionPots";
 import { PensionsResultSchema } from "../../validators/pensions";
@@ -15,7 +14,7 @@ export const getAllPensionPotsController: RequestHandler = async (
 
   if (parsedResult.success === false) {
     // Logging service
-    console.error(fromError(parsedResult.error).toString());
+    // console.error(fromError(parsedResult.error).toString());
 
     throw new AppError({
       status: 500,
